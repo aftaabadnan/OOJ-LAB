@@ -1,0 +1,241 @@
+import java.util.Scanner;
+import java.lang.Math;
+abstract class Calculate
+{
+Calculate(){}
+double x,y,result;
+abstract void calc();
+}
+class Arith1 extends Calculate
+{
+Scanner s=new Scanner(System.in);
+void calc()
+{
+System.out.println("Enter values for x and y");
+x=s.nextDouble();
+y=s.nextDouble();
+result=x+y;
+System.out.println("Sum= "+result);
+}
+Arith1(){}
+}
+
+
+class Arith2 extends Calculate
+{
+Scanner s=new Scanner(System.in);
+void calc()
+{
+System.out.println("Enter values for x and y");
+x=s.nextDouble();
+y=s.nextDouble();
+result=x*y;
+System.out.println("Product= "+result);
+}
+Arith2(){}
+}
+
+class Arith3 extends Calculate
+{
+Scanner s=new Scanner(System.in);
+void calc()
+{
+System.out.println("Enter values for x and y");
+x=s.nextDouble();
+y=s.nextDouble();
+result=x/y;
+System.out.println("Quotient="+result);
+}
+Arith3(){}
+}
+
+
+class Lab6
+{
+public static void main(String xx[])
+{
+Arith1 a =new Arith1();
+a.calc();
+Arith2 b =new Arith2();
+b.calc();
+Arith3 c =new Arith3();
+c.calc();
+
+}
+
+//b
+
+import java.util.Scanner;
+
+class Customer{
+private int cust_no;
+private String cust_name;
+private int quantity;
+private float price;
+private float total_price,discount,net_price;
+
+Customer(){}
+
+Customer(int no,String name,int qua,float pri){
+cust_no=no;
+cust_name=name;
+quantity=qua;
+price=pri;
+total_price=quantity*price;
+}
+
+void input(){
+Scanner s=new Scanner(System.in);
+System.out.println("Enter customer number,customer name,item quantity,item price");
+cust_no=s.nextInt();
+cust_name=s.next();
+quantity=s.nextInt();
+price=s.nextFloat();
+total_price=quantity*price;
+}
+
+void calDiscount(){
+if(total_price>=50000){
+discount=(float)(total_price*0.25);
+}else if(total_price>=25000){
+discount=(float)(total_price*0.1);
+}else{
+discount=0;
+}
+net_price=total_price-discount;
+}
+
+void show(){
+System.out.println("-----Customer Details--------");
+System.out.println("\n\nCustomer number: "+cust_no+"\nCustomer name: "+cust_name+"\nQuantity: "+quantity+"\nItem price: "+price+"\nTotal price: "+total_price+"\nDiscount: "+discount+"\nNet price: "+net_price+"\n\n");
+}
+
+}
+
+class Lab_6{
+public static void main(String x[]){
+Scanner s=new Scanner(System.in);
+System.out.println("Enter number of objects to be created");
+int n=s.nextInt();
+Customer[] c=new Customer[n];
+for(int i=0;i<n;i++){
+System.out.println("Enter customer number,customer name,item quantity,item price");
+int no=s.nextInt();
+String name=s.next();
+int qua=s.nextInt();
+float pr=s.nextFloat();
+c[i]=new Customer(no,name,qua,pr);
+c[i].calDiscount();
+}
+
+for(int i=0;i<n;i++){
+c[i].show();
+}
+
+}
+
+}
+
+//c part
+
+
+// Create a class Customer
+with the following specifications. 
+
+
+Private Members :
+
+
+               Customer_no ,
+Customer_name,  Qty ,  Price, TotalPrice, Discount, Netprice.
+
+
+  Methods: Public members:
+
+
+               1. A parameterized constructor
+to assign initial
+
+
+               2. Input( ) – to read data
+members. Call Caldiscount().
+
+
+               3. Caldiscount ( ) – To
+calculate Discount according to TotalPrice and NetPrice
+
+
+                      TotalPrice = Price*Qty
+
+
+                      TotalPrice >=50000 – Discount 25% of
+TotalPrice
+
+
+                      TotalPrice >=25000 - Discount 10% of
+TotalPrice
+
+
+                      Netprice=
+TotalPrice-Discount
+
+
+        4.
+Show( ) – to display Customer details.                     
+
+import java.util.*;
+class Customer
+{
+    private int c_no;
+  private String c_name;
+private float qt;
+private double price;
+private double tp;
+private double discount;
+private double netprice;
+Customer(float q,double d)
+{
+qt=q;
+discount=d;
+}
+public void input()
+
+{
+Scanner s=new Scanner(System.in);
+System.out.println("enter customer number and name,quantity,price,total price and net price:");
+c_no=s.nextInt();
+c_name=s.next();
+qt=s.nextFloat();
+price=s.nextDouble();
+discount=s.nextDouble();
+netprice=s.nextDouble();
+}
+public void cd()
+{
+tp=price*qt;
+if(tp>=50000)
+{
+discount=0.25*tp;}
+else if(tp>=25000&&tp<50000)
+{
+discount=0.1*tp;
+}
+else
+{System.out.println("no discount");}
+netprice=tp-discount;
+}
+public void display()
+{
+System.out.println(c_no+"  " +c_name+" "+qt+" "+netprice);
+System.out.println("total discount:"+discount);
+}}
+class Cost
+{
+public static void main(String args[])
+{
+Customer c=new Customer(3,100);
+c.input();
+c.cd();
+c.display();
+}
+}
